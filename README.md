@@ -4,8 +4,6 @@
 
 ---
 
-Comunicado n.º 8
-
 Para conocimiento de quien acceda a este repositorio, quede constancia de lo siguiente:
 
 Este espacio contiene el material gráfico y documental generado por el Brazo Armado del Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida, en el marco de las negociaciones en curso con el Comité de Liberación del Esqueleto por la custodia de Anacleto (Fred A15, 206 huesos, cinco ruedas).
