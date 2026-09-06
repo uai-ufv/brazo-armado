@@ -188,6 +188,7 @@
   @media (max-width:720px){ .demandas{grid-template-columns:1fr;} }
   .demanda{
     background:var(--bone-black-2); padding:28px 26px;
+    scroll-margin-top:90px;
   }
   .demanda .n{ font-family:'Oswald', sans-serif; color:var(--blood-bright); font-size:0.8rem; margin-bottom:10px;}
   .demanda h3{ font-size:1.05rem; margin-bottom:10px; text-transform:none; letter-spacing:0; font-weight:600;}
@@ -403,6 +404,33 @@
   </div>
 </section>
 
+<section id="empleos">
+  <div class="section-head">
+    <h2>Incorporaciones al Movimiento</h2>
+    <span class="section-num">05 / VACANTES ABIERTAS</span>
+  </div>
+  <p style="max-width:64ch; color:var(--bone-dim); font-size:0.92rem; margin:-20px 0 36px;">
+    Ante el nivel de sofisticación alcanzado por las operaciones del CLE, el Movimiento amplía su estructura. Se abren las siguientes plazas. Las candidaturas se gestionan de forma confidencial a través de EPOC.
+  </p>
+  <div class="demandas">
+    <div class="demanda" id="vac-01">
+      <div class="n">VAC-01</div>
+      <h3>Agente de campo — Recuperación de extremidades</h3>
+      <p>Patrullas discretas por el edificio H y alrededores. Inventario periódico de los 206 huesos. Disuasión de incursiones del CLE en horario nocturno. Se valorará experiencia previa esquivando al Servicio de Reconocimiento de Cuerpos Post Mortem.</p>
+    </div>
+    <div class="demanda" id="vac-02">
+      <div class="n">VAC-02</div>
+      <h3>Analista de criptografía ósea (EPOC)</h3>
+      <p>Descifrado de comunicados del CLE. Seguimiento de movimientos por el Campus. Mantenimiento del argumentario institucional del Movimiento. Requisito indispensable: paciencia con las metáforas biológicas de la dirección.</p>
+    </div>
+    <div class="demanda" id="vac-03">
+      <div class="n">VAC-03 · ASIGNACIÓN DIRECTA</div>
+      <h3>Jefatura del Departamento de Farmacología del Antídoto</h3>
+      <p>Desarrollo, custodia y administración del antídoto prometido en el Comunicado n.º 7. Se busca perfil con formación en farmacología y experiencia en la inhibición de procesos inflamatorios de origen articular y óseo — la gota, sin ir más lejos, es territorio muy conocido para el Movimiento — así como en compuestos naturales con potencial protector. Plaza cubierta por designación directa de la Dirección; no se aceptan candidaturas espontáneas.</p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <span>Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida — Brazo Armado</span>
   <span>Comunicación cifrada vía EPOC. No responder por canales convencionales.</span>
@@ -428,8 +456,8 @@
   updateClock();
   setInterval(updateClock, 1000);
 
-  // Comunicados anteriores, ordenados del más reciente (penúltimo del hilo) al más antiguo.
-const archivo = [
+  // Comunicados anteriores, ordenados del más reciente (penúltimo del hilo al más antiguo.
+  const archivo = [
 
   {
     remitente: "CLE → M.E.D.I.C.I.N.A.",
