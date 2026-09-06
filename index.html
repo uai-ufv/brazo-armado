@@ -140,6 +140,46 @@
   }
   .comunicado .firma strong{ color:var(--bone); display:block; margin-top:6px; letter-spacing:0.03em;}
 
+  /* ---------- Comunicado + archivo ---------- */
+  .comunicado-grid{
+    display:grid; grid-template-columns:1.1fr 1fr; gap:48px; align-items:start;
+  }
+  @media (max-width:900px){ .comunicado-grid{grid-template-columns:1fr;} }
+
+  .archivo{
+    border-left:3px solid var(--scrub);
+    padding:2px 0 2px 28px;
+  }
+  .archivo-head{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:18px; gap:16px;
+  }
+  .archivo-head .archivo-label{ font-size:0.7rem; color:var(--bone-dim); letter-spacing:0.06em;}
+  .archivo-nav{ display:flex; align-items:center; gap:14px;}
+  .archivo-nav button{
+    background:none; border:1px solid var(--line); color:var(--bone);
+    width:32px; height:32px; border-radius:0; cursor:pointer;
+    font-family:'Space Mono', monospace; font-size:1rem; line-height:1;
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color 0.15s, color 0.15s;
+  }
+  .archivo-nav button:hover{ border-color:var(--scrub); color:var(--scrub); }
+  .archivo-nav button:disabled{ opacity:0.3; cursor:default; }
+  .archivo-nav button:disabled:hover{ border-color:var(--line); color:var(--bone); }
+  .archivo-count{ font-size:0.75rem; color:var(--bone-dim); min-width:34px; text-align:center; }
+
+  .archivo-meta{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+    font-size:0.78rem; color:var(--bone-dim); margin-bottom:16px;
+    border-bottom:1px solid var(--line); padding-bottom:14px;
+  }
+  .archivo-meta .remitente{ color:var(--bone); font-weight:700; letter-spacing:0.02em; }
+
+  .archivo-body p{ margin:0 0 16px; font-size:0.92rem; color:var(--bone); }
+  .archivo-body p:last-child{ margin-bottom:0; }
+  .archivo-firma{ margin-top:20px; color:var(--bone-dim); font-size:0.8rem; }
+  .archivo-firma strong{ color:var(--bone); display:block; margin-top:4px; }
+
   /* ---------- Demands ---------- */
   .demandas{
     display:grid; grid-template-columns:repeat(2,1fr); gap:1px;
@@ -231,16 +271,35 @@
     <h2>El último comunicado</h2>
     <span class="section-num">01 / TRANSCRIPCIÓN ÍNTEGRA</span>
   </div>
-  <div class="comunicado">
-    <p>Confirmamos que, en las últimas horas, miembros del CLE han accedido a las instalaciones del Movimiento.</p>
-    <p>Confirmamos también el intento de engaño llevado a cabo desde su organización. La fotografía aportada en su último comunicado evidencia que el contenido del vaso siempre fue agua en estado líquido y que nunca se llegó a entregar un hielo. El AC frío está siempre activado en nuestras instalaciones para refrigerar nuestros centros de datos, por lo que es imposible que aquí se deshiele un hielo.</p>
-    <p>Desde el Movimiento hemos expresado nuestra determinación de finalizar con las tensiones, por el bien de Anacleto y de los alumnos. Sin embargo, su respuesta ha sido una ofensiva injustificada.</p>
-    <p>Conviene recordar que en la naturaleza los colores llamativos no aparecen por casualidad. En algunas especies, anuncian néctar y polen. Pero en otras, la coloración constituye una señal de advertencia de toxicidad para disuadir a los depredadores. Y la naturaleza ha decidido qué propósito tenía reservado para el CLE.</p>
-    <p>Devuelvan el rosario. Dios está de nuestra parte. Estamos dispuestos a entregar el antídoto y retomar las negociaciones previas.</p>
-    <div class="firma">
-      Atte.,
-      <strong>Húmero, Cúbito y Radio</strong>
-      Líderes del Brazo Armado del Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida
+  <div class="comunicado-grid">
+    <div class="comunicado">
+      <p>Confirmamos que, en las últimas horas, miembros del CLE han accedido a las instalaciones del Movimiento.</p>
+      <p>Confirmamos también el intento de engaño llevado a cabo desde su organización. La fotografía aportada en su último comunicado evidencia que el contenido del vaso siempre fue agua en estado líquido y que nunca se llegó a entregar un hielo. El AC frío está siempre activado en nuestras instalaciones para refrigerar nuestros centros de datos, por lo que es imposible que aquí se deshiele un hielo.</p>
+      <p>Desde el Movimiento hemos expresado nuestra determinación de finalizar con las tensiones, por el bien de Anacleto y de los alumnos. Sin embargo, su respuesta ha sido una ofensiva injustificada.</p>
+      <p>Conviene recordar que en la naturaleza los colores llamativos no aparecen por casualidad. En algunas especies, anuncian néctar y polen. Pero en otras, la coloración constituye una señal de advertencia de toxicidad para disuadir a los depredadores. Y la naturaleza ha decidido qué propósito tenía reservado para el CLE.</p>
+      <p>Devuelvan el rosario. Dios está de nuestra parte. Estamos dispuestos a entregar el antídoto y retomar las negociaciones previas.</p>
+      <div class="firma">
+        Atte.,
+        <strong>Húmero, Cúbito y Radio</strong>
+        Líderes del Brazo Armado del Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida
+      </div>
+    </div>
+
+    <div class="archivo">
+      <div class="archivo-head">
+        <span class="archivo-label">COMUNICADOS ANTERIORES</span>
+        <div class="archivo-nav">
+          <button id="archivo-prev" aria-label="Comunicado anterior">‹</button>
+          <span class="archivo-count" id="archivo-count">1 / 8</span>
+          <button id="archivo-next" aria-label="Comunicado siguiente">›</button>
+        </div>
+      </div>
+      <div class="archivo-meta">
+        <span class="remitente" id="archivo-remitente"></span>
+        <span id="archivo-fecha"></span>
+      </div>
+      <div class="archivo-body" id="archivo-body"></div>
+      <div class="archivo-firma" id="archivo-firma"></div>
     </div>
   </div>
 </section>
@@ -330,17 +389,14 @@
   </div>
   <div class="lideres">
     <div class="lider">
-      <svg class="hueso" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8c-1.2 0-2 1-1.7 2.1.1.6-.2 1.1-.7 1.4-.9.5-1 1.7-.3 2.4.4.4.4.9 0 1.4-.7.7-.6 1.9.3 2.4.5.3.8.8.7 1.4C1.9 20.4 2.6 21 4 21c.7 0 1.1-.4 1.5-1 .4.6.8 1 1.5 1s1.1-.4 1.5-1c.4.6.8 1 1.5 1 1.4 0 2.1-.6 1.8-1.9-.1-.6.2-1.1.7-1.4.9-.5 1-1.7.3-2.4-.4-.5-.4-1 0-1.4.7-.7.6-1.9-.3-2.4-.5-.3-.8-.8-.7-1.4C12.5 9 11.7 8 10.5 8c-.7 0-1.1.4-1.5 1-.4-.6-.8-1-1.5-1s-1.1.4-1.5 1C5.6 8.4 5.2 8 4 8Z"/><path d="M20 8c-1.2 0-2 1-1.7 2.1.1.6-.2 1.1-.7 1.4-.9.5-1 1.7-.3 2.4.4.4.4.9 0 1.4-.7.7-.6 1.9.3 2.4.5.3.8.8.7 1.4C17.9 20.4 18.6 21 20 21"/></svg>
       <h3>Húmero</h3>
       <p>Al mando de operaciones. Responsable de la formación del Brazo Armado y del último ultimátum.</p>
     </div>
     <div class="lider">
-      <svg class="hueso" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 4v16M6 4c-1.2 0-2-1-1.7-2.1M6 20c-1.2 0-2 1-1.7 2.1M18 4c1.2 0 2-1 1.7-2.1M18 20c1.2 0 2 1 1.7 2.1M18 4v16" stroke-linecap="round"/></svg>
       <h3>Cúbito</h3>
       <p>Inteligencia y comunicaciones. Enlace directo con el Escuadrón de Protección y Operaciones Cibernéticas (EPOC).</p>
     </div>
     <div class="lider">
-      <svg class="hueso" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M9 4v16M9 4c-1.2 0-2-1-1.7-2.1M9 20c-1.2 0-2 1-1.7 2.1M15 4c1.2 0 2-1 1.7-2.1M15 20c1.2 0 2 1 1.7 2.1M15 4v16" stroke-linecap="round"/></svg>
       <h3>Radio</h3>
       <p>Custodia del antídoto y de las condiciones del canje. Único autorizado a fijar fecha y hora de entrega.</p>
     </div>
@@ -371,6 +427,133 @@
   }
   updateClock();
   setInterval(updateClock, 1000);
+
+  // Comunicados anteriores, ordenados del más reciente (penúltimo del hilo) al más antiguo.
+const archivo = [
+
+  {
+    remitente: "CLE → M.E.D.I.C.I.N.A.",
+    fecha: "4 SEP 2026 · 15:14",
+    cuerpo: [
+      "El CLE acusa recibo de sus últimas exigencias y comunica que el Plan de Adaptación y Cuidados (AC frío y calor) ya ha comenzado a ejecutarse.",
+      "Como muestra de nuestra buena voluntad, hemos procedido a entregar uno de los cinco cubos de agua con hielo solicitados. Insistimos: el hielo estaba cuando lo dejamos.",
+      "Asimismo, podemos confirmar que hemos conseguido movilizar el primero de los camiones de gominolas.",
+      "Durante nuestras últimas operaciones, el CLE ha tomado bajo su custodia un objeto perteneciente al Movimiento. Exigimos: devolución de nuestro querido Anacleto, Fred A15, con sus 206 huesos y cinco ruedas, y 1 excavadora de chocolate."
+    ],
+    firma: "Comité de Liberación del Esqueleto"
+  },
+
+  {
+    remitente: "M.E.D.I.C.I.N.A. → CLE",
+    fecha: "4 SEP 2026 · 10:33",
+    cuerpo: [
+      "Nuestros agentes del EPOC, después de tomarse un Danacol para poder pasar unas estatinas atascadas en la garganta, han analizado la documentación personal de Anacleto. Con los datos proporcionados la probabilidad de que se trate de un factor de riesgo es relativamente baja, por lo que no tenemos evidencia para aceptar nuestra hipótesis nula de que Anacleto sea un infiltrado para derrotar a Edith Stein.",
+      "No obstante, la falta de evidencia no implica que esa sea la realidad, solo lo observado. La afirmación del CLE de no tener constancia de ningún plan de ataque al menos en la documentación desclasificada, deja abierta la posibilidad de que en el futuro, con nuevos datos, nuestras conclusiones del test de Anacleto cambien.",
+      "Para la entrega del esqueleto necesitamos que el CLE proporcione un plan de Adaptación y Cuidados (AC frío y calor), donde se detalle la vuelta de Anacleto a la vida civil y acciones que garanticen su calidad de vida. El AC frío y calor debe hacer énfasis en su vida como civil.",
+      "Avisamos al CLE que el Movimiento tiene infiltrados en el edificio H y alrededores de la U. Tenemos huellas de sus cinco ruedas en nuestro sistema, las cuales hemos sellado para que no puedan ser cambiadas. Somos capaces de hacer seguimiento de los desplazamientos de Anacleto. También hemos incorporado un GPS por donde nunca da el sol, en el caso de Anacleto esto ha sido sumamente difícil.",
+      "Declaramos que haremos un conteo frecuente de los Fred A15 en el Campus como profilaxis.",
+      "Esperamos que las negociaciones e intercambios concluyan antes de que el Campus se llene de chiquillos."
+    ],
+    firma: "Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida (MEDICINA)"
+  },
+
+  {
+    remitente: "CLE → M.E.D.I.C.I.N.A.",
+    fecha: "3 SEP 2026 · 16:45",
+    cuerpo: [
+      "Ante las últimas informaciones difundidas por EPOC, el CLE considera necesario aclarar definitivamente la identidad del esqueleto.",
+      "Confirmamos que Fred A15 es, efectivamente, su modelo. Su nombre, sin embargo, es y siempre ha sido Anacleto Expósito.",
+      "Adjuntamos su documento nacional de esqueleto. Respecto a sus supuestas intenciones de acabar con Edith Stein, negamos rotundamente tener constancia de ningún plan de estas características. Al menos en la documentación desclasificada."
+    ],
+    firma: "Comité de Liberación del Esqueleto — Unidad de Anatomía Diplomática"
+  },
+
+  {
+    remitente: "M.E.D.I.C.I.N.A. → CLE",
+    fecha: "3 SEP 2026 · 16:16",
+    cuerpo: [
+      "Nuestro Escuadrón de Protección y Operaciones Cibernéticas (EPOC) ha encontrado documentos secretos sobre Anacleto. Su nombre real es Fred A15.",
+      "Nuestras fuentes nos han confirmado que el individuo Fred A15 puede ser un cyborg 3B flexible sobre pie metálico con 5 ruedas para acabar con Edith Stein, la inteligencia artificial que lidera el equipo de investigación clínica del edificio E.",
+      "Exigimos al CLE algún tipo de documentación veraz sobre el origen del esqueleto. Hasta entonces las negociaciones quedan bloqueadas cual arteria con colesterol del malo."
+    ],
+    firma: "MEDICINA"
+  },
+
+  {
+    remitente: "M.E.D.I.C.I.N.A. → CLE",
+    fecha: "3 SEP 2026 · 16:10",
+    cuerpo: [
+      "Desde el Movimiento reconocemos su voluntad de regularizar la situación ilegal del esqueleto.",
+      "Pedimos al CLE toda la información de vital importancia sobre el esqueleto, incluyendo alergias y aceites adecuados para sus extremidades. Esta declaración nos ha llevado a detectarle una hernia discal.",
+      "Confirmamos que Anacleto está con total lucidez y en buen estado, pasando de un estado gracilis ad extremum a un estado cutis et ossa. Los metacarpianos siguen intactos, tampoco hemos sabido encontrarlos."
+    ],
+    firma: "Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida (MEDICINA)"
+  },
+
+  {
+    remitente: "CLE → M.E.D.I.C.I.N.A.",
+    fecha: "3 SEP 2026 · 15:23",
+    cuerpo: [
+      "Tras recibir su comunicado, el Comité de Liberación del Esqueleto (CLE) ha convocado una reunión extraordinaria.",
+      "Rechazamos rotundamente las acusaciones de abandono. Recordamos que Anacleto carece de sistema nervioso central, musculatura, aparato fonador y capacidad para prestar consentimiento informado. Cualquier declaración atribuida al paciente será considerada obtenida bajo coacción.",
+      "Hemos tomado nota de los dos camiones de gominolas, los dos camiones de fruta ecológica con semillas, los cinco cubos de agua con hielo y la semana de realidad virtual. Rogamos mantengan intactos los 206 huesos. Especialmente los metacarpianos."
+    ],
+    firma: "Comité de Liberación del Esqueleto — Unidad especial de Anatomía Diplomática"
+  },
+
+  {
+    remitente: "M.E.D.I.C.I.N.A. → CLE",
+    fecha: "3 SEP 2026 · 10:49",
+    cuerpo: [
+      "Desde el Movimiento dejamos claro que coordinación del programa internacional UFV no tiene constancia de Anacleto en todo el Campus.",
+      "Manifestamos que no se trata de un secuestro. El esqueleto está siendo cuidado y expresa su voluntariedad de seguir disfrutando de este nuevo estado de bienestar.",
+      "No exigimos ningún rescate sino un intercambio: dos camiones de gominolas, otros dos camiones de fruta con semillas, los cinco cubos de agua con hielo y la semana jugando con las gafas de realidad virtual."
+    ],
+    firma: "Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida (MEDICINA)"
+  },
+
+  {
+    remitente: "CLE → M.E.D.I.C.I.N.A.",
+    fecha: "2 SEP 2026 · 15:43",
+    cuerpo: [
+      "Hemos recibido sus exigencias y podemos confirmar que el Comité de Crisis para la Recuperación del Sistema Musculoesquelético ya se encuentra reunido.",
+      "Queremos dejar claro que el esqueleto NO fue abandonado. Se encontraba realizando una estancia Erasmus no autorizada en Medicina.",
+      "Hemos recibido la documentación gráfica del rehén y podemos confirmar que, de momento, parece encontrarse en buen estado. Tenemos perfectamente inventariados sus 206 huesos. Ni se les ocurra tocarle un metacarpiano."
+    ],
+    firma: "Comité de Liberación del Esqueleto — Unidad Especial de Anatomía Diplomática"
+  },
+
+  {
+    remitente: "M.E.D.I.C.I.N.A. → CLE",
+    fecha: "2 SEP 2026 · 15:03",
+    cuerpo: [
+      "Tenemos bajo control a su esqueleto. Pedimos como rescate dos camiones llenos de gominolas, cinco cubos de agua con hielo y una semana de juegos con las gafas de realidad virtual.",
+      "Exigimos también un comunicado oficial (preferiblemente vídeo) donde se reconozca el abandono del esqueleto y la promesa de no volver a dejar atrás ningún elemento del sistema musculoesquelético.",
+      "Si no cumplen con nuestras exigencias antes del martes que viene, se lo devolveremos en trocitos día a día."
+    ],
+    firma: "MEDICINA"
+  }
+
+];
+
+  let archivoIdx = 0;
+  function renderArchivo(){
+    const item = archivo[archivoIdx];
+    document.getElementById('archivo-remitente').textContent = item.remitente;
+    document.getElementById('archivo-fecha').textContent = item.fecha;
+    document.getElementById('archivo-body').innerHTML = item.cuerpo.map(p => `<p>${p}</p>`).join('');
+    document.getElementById('archivo-firma').innerHTML = `Atte., <strong>${item.firma}</strong>`;
+    document.getElementById('archivo-count').textContent = `${archivoIdx + 1} / ${archivo.length}`;
+    document.getElementById('archivo-prev').disabled = archivoIdx === 0;
+    document.getElementById('archivo-next').disabled = archivoIdx === archivo.length - 1;
+  }
+  document.getElementById('archivo-prev').addEventListener('click', () => {
+    if (archivoIdx > 0){ archivoIdx--; renderArchivo(); }
+  });
+  document.getElementById('archivo-next').addEventListener('click', () => {
+    if (archivoIdx < archivo.length - 1){ archivoIdx++; renderArchivo(); }
+  });
+  renderArchivo();
 </script>
 
 </body>
