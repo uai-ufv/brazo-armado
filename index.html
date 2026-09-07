@@ -121,10 +121,6 @@
     max-width:1100px;
     border-top:1px solid var(--line);
   }
-  #comunicado{
-    max-width:none;
-    width:100%;
-  }
   .section-head{
     display:flex; justify-content:space-between; align-items:flex-end; gap:20px;
     margin-bottom:44px; flex-wrap:wrap;
@@ -183,6 +179,22 @@
   .archivo-body p:last-child{ margin-bottom:0; }
   .archivo-firma{ margin-top:20px; color:var(--bone-dim); font-size:0.8rem; }
   .archivo-firma strong{ color:var(--bone); display:block; margin-top:4px; }
+
+  /* ---------- Pruebas gráficas ---------- */
+  .pruebas{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line);
+  }
+  @media (max-width:900px){ .pruebas{grid-template-columns:1fr;} }
+  .prueba{ background:var(--bone-black-2); }
+  .prueba img{
+    width:100%; height:220px; object-fit:cover; display:block;
+    filter:grayscale(15%) contrast(1.05);
+  }
+  .prueba-caption{ padding:20px 22px; }
+  .prueba-caption .n{ font-family:'Oswald', sans-serif; color:var(--blood-bright); font-size:0.78rem; margin-bottom:8px;}
+  .prueba-caption p{ margin:0; color:var(--bone-dim); font-size:0.85rem; }
+  .prueba-caption .nota{ display:block; margin-top:8px; color:var(--scrub); font-size:0.72rem; letter-spacing:0.03em; }
 
   /* ---------- Demands ---------- */
   .demandas{
@@ -253,29 +265,22 @@
     <a href="#comunicado">Comunicado</a>
     <a href="#exigencias">Exigencias</a>
     <a href="#cronologia">Cronología</a>
+    <a href="#pruebas">Pruebas</a>
     <a href="#mando">Mando</a>
-    <a href="#empleos">Únete al Movimiento</a>
   </nav>
 </header>
 
 <div class="hero">
-  <h1><span class="rule">DEVUELVAN</span>EL ROSARIO.</h1>
-  <span class="kicker"></span>
-  <span class="kicker">COMUNICADO - 5 DE SEPTIEMBRE DE 2026, 22:13H</span>
+  <span class="kicker" id="hero-kicker">ÚLTIMO COMUNICADO — EPOC, 7 DE SEPTIEMBRE DE 2026, 13:04H</span>
+  <h1><span class="rule">SIGAN</span>HACIENDO MOVIMIENTOS.</h1>
   <p class="lede">
-    El Comité de Liberación del Esqueleto ha entrado en nuestras instalaciones y se ha llevado un objeto perteneciente al Movimiento. La respuesta ya no se negocia en la mesa. Se negocia en el reloj.
+    EPOC ha analizado la fotografía aportada por el propio CLE: modelo de teléfono, hora exacta de la captura, nivel de zoom. Cuanta más vigilancia, más fácil la identificación.
   </p>
-
-  <span class="kicker">COMUNICADO - 7 DE SEPTIEMBRE DE 2026, 09:15H</span>
-  <p class="lede">
-    El CLE responde a la munición personalizada del Brazo Armado con nuevas condiciones para la devolución del rosario y exige garantías sobre el antídoto. El Movimiento prepara respuesta.
-  </p>
-  <p class="lede">
 
   <div class="deadline">
-    <div class="label">CUENTA ATRÁS HASTA EL VIERNES 11, 12:00H</div>
+    <div class="label">CUENTA ATRÁS HASTA EL FIN DE LA SEMANA LABORAL — EFECTO IRREVERSIBLE DE LA TOXINA</div>
     <div class="clock" id="clock">— — : — — : — —</div>
-    <div class="sub">Tiempo hasta que los efectos de la toxina sean irreversibles en quienes participaron en la extracción.</div>
+    <div class="sub">El Movimiento ha ampliado el plazo y reducido la potencia del antídoto. Alto el fuego declarado hasta entonces.</div>
   </div>
 </div>
 
@@ -286,15 +291,12 @@
   </div>
   <div class="comunicado-grid">
     <div class="comunicado">
-      <p>El CLE ha recibido esta mañana un mensaje que interpretamos como un preocupante cambio en la estrategia negociadora del denominado Brazo Armado del Movimiento. Una bala con nuestro nombre. Tomamos nota.</p>
-      <p>En cuanto a las gravísimas acusaciones relativas al vaso, rechazamos categóricamente cualquier intento de engaño. El CLE entregó hielo. Que en el momento de la inspección este presentase estructura molecular compatible con agua líquida no demuestra cuál era su estado físico en el momento de la entrega. Correlación no implica causalidad.</p>
-      <p>Respecto al supuesto envenenamiento derivado de nuestra operación de extracción, informamos de que los miembros del CLE implicados continúan conscientes, orientados en las tres esferas y sin delirios conocidos. Si alguno comienza a presentar delirios, alucinaciones o conductas inexplicables, procederemos a comunicarlo inmediatamente.</p>
-      <p>Respecto al rosario, permanece bajo custodia del CLE y en perfecto estado de conservación. Seguimos dispuestos a negociar su devolución, pero la aparición de munición con las siglas de nuestra organización obliga a actualizar nuevamente las condiciones: devolución inmediata de Anacleto sin dispositivos de geolocalización, la excavadora de chocolate pendiente, el antídoto con prospecto y evidencia científica de su eficacia, y una declaración oficial de alto el fuego.</p>
-      <p>Cumplidas estas condiciones, el CLE estudiará la devolución del rosario en el mismo estado en el que fue encontrado. Hasta entonces permanecerá bajo nuestra protección.</p>
-      <div class="firma">
-        Atte.,
-        <strong>Comité de Liberación del Esqueleto (CLE)</strong>
+      <div class="archivo-meta" style="border-bottom:none; padding-bottom:0; margin-bottom:16px;">
+        <span class="remitente" id="featured-remitente"></span>
+        <span id="featured-fecha"></span>
       </div>
+      <div id="featured-body"></div>
+      <div class="firma" id="featured-firma"></div>
     </div>
 
     <div class="archivo">
@@ -302,7 +304,7 @@
         <span class="archivo-label">COMUNICADOS ANTERIORES</span>
         <div class="archivo-nav">
           <button id="archivo-prev" aria-label="Comunicado anterior">‹</button>
-          <span class="archivo-count" id="archivo-count">1 / 10</span>
+          <span class="archivo-count" id="archivo-count">— / —</span>
           <button id="archivo-next" aria-label="Comunicado siguiente">›</button>
         </div>
       </div>
@@ -415,6 +417,38 @@
   </div>
 </section>
 
+<section id="pruebas">
+  <div class="section-head">
+    <h2>Pruebas gráficas</h2>
+    <span class="section-num">04B / MATERIAL APORTADO POR AMBAS PARTES</span>
+  </div>
+  <div class="pruebas">
+    <div class="prueba">
+      <img src="img/prueba-de-vida.jpg" alt="Prueba de vida de Anacleto, con su etiqueta de identificación">
+      <div class="prueba-caption">
+        <div class="n">ANEXO · 2 SEP 15:43</div>
+        <p>Documentación gráfica del rehén aportada por el CLE: "de momento, parece encontrarse en buen estado."</p>
+        <span class="nota">Imagen intervenida para proteger identidades.</span>
+      </div>
+    </div>
+    <div class="prueba">
+      <img src="img/camion-gominolas.jpg" alt="Camión de gominolas movilizado por el CLE">
+      <div class="prueba-caption">
+        <div class="n">ANEXO · 4 SEP 15:14</div>
+        <p>Documentación gráfica del primer camión de gominolas movilizado, según el CLE, "acredita el importante esfuerzo logístico realizado."</p>
+        <span class="nota">Imagen intervenida para proteger identidades.</span>
+      </div>
+    </div>
+    <div class="prueba">
+      <img src="img/dne-anacleto.png" alt="Documento Nacional de Esqueleto de Anacleto">
+      <div class="prueba-caption">
+        <div class="n">ANEXO · 3 SEP 16:45</div>
+        <p>Documento Nacional de Esqueleto adjuntado por el CLE para acreditar que "Anacleto es Anacleto", independientemente de su modelo técnico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="empleos">
   <div class="section-head">
     <h2>Incorporaciones al Movimiento</h2>
@@ -448,45 +482,72 @@
 </footer>
 
 <script>
-  // function updateClock(){
-  //   const now = new Date();
-  //   const target = new Date();
-  //   const day = target.getDay();
-  //   let diff = (1 - day + 7) % 7;
-  //   if (diff === 0 && now.getHours() >= 17) diff = 7;
-  //   target.setDate(target.getDate() + diff);
-  //   target.setHours(17,0,0,0);
-  //   let ms = target - now;
-  //   if (ms < 0) ms = 0;
-  //   const h = Math.floor(ms / 3600000);
-  //   const m = Math.floor((ms % 3600000) / 60000);
-  //   const s = Math.floor((ms % 60000) / 1000);
-  //   const pad = n => String(n).padStart(2,'0');
-  //   document.getElementById('clock').textContent = `${pad(h)} : ${pad(m)} : ${pad(s)}`;
-  // }
-  // updateClock();
-  // setInterval(updateClock, 1000);
-
-  const TARGET_DATE = '2026-09-11T12:00:00';
-  function updateClock() {
+  function updateClock(){
     const now = new Date();
-    const target = new Date(TARGET_DATE);
+    const target = new Date();
+    const day = target.getDay();
+    let diff = (5 - day + 7) % 7;
+    if (diff === 0 && now.getHours() >= 20) diff = 7;
+    target.setDate(target.getDate() + diff);
+    target.setHours(20,0,0,0);
     let ms = target - now;
     if (ms < 0) ms = 0;
     const h = Math.floor(ms / 3600000);
     const m = Math.floor((ms % 3600000) / 60000);
     const s = Math.floor((ms % 60000) / 1000);
-    const pad = n => String(n).padStart(2, '0');
-    document.getElementById('clock').textContent =
-      `${pad(h)} : ${pad(m)} : ${pad(s)}`;
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('clock').textContent = `${pad(h)} : ${pad(m)} : ${pad(s)}`;
   }
-
   updateClock();
   setInterval(updateClock, 1000);
 
-  // Comunicados anteriores, ordenados del más reciente (penúltimo del hilo,
-  // es decir, el mensaje inmediatamente anterior al comunicado destacado) al más antiguo.
-  const archivo = [
+  // TODOS los comunicados, del más reciente al más antiguo.
+  // El primer elemento del array es siempre el que se muestra como
+  // "último comunicado" destacado; el resto alimenta el carrusel de
+  // "comunicados anteriores". Para añadir uno nuevo, solo hay que
+  // insertar un objeto nuevo al PRINCIPIO de este array.
+  const comunicados = [
+    {
+      remitente: "M.E.D.I.C.I.N.A. → CLE",
+      fecha: "7 SEP 2026 · 13:04",
+      cuerpo: [
+        "En respuesta a vuestro reciente mensaje, efectivamente, la vigilancia no cesa. Pero no somos nosotros los vigilados. Les sugerimos que hagan zoom a la fotografía. Son sus integrantes y cómplices quienes están siendo vigilados.",
+        "Nuestro servicio de inteligencia ha procedido a analizar la imagen aportada por el propio CLE. Confirmamos: dispositivo POCO F6 Pro (Xiaomi); hora de la captura, 07/09/2026 a las 12:29:25 (CEST); cámara trasera; flash ausente; zoom aplicado, 2,34×.",
+        "Este nivel de detalle facilita enormemente la identificación de la persona infiltrada mediante trigonometría básica y conocimientos elementales de optometría.",
+        "Por favor, sigan haciendo movimientos. Facilitan enormemente nuestro trabajo."
+      ],
+      firma: "EPOC"
+    },
+    {
+      remitente: "CLE → M.E.D.I.C.I.N.A.",
+      fecha: "7 SEP 2026 · 12:40",
+      cuerpo: [
+        "La vigilancia no cesa, no hagan movimientos."
+      ],
+      firma: "CLE"
+    },
+    {
+      remitente: "M.E.D.I.C.I.N.A. → CLE",
+      fecha: "7 SEP 2026 · 10:56",
+      cuerpo: [
+        "Respecto a la bala con su nombre, creemos que han encontrado por fin la causalidad que tanto buscaban. La decisión de armar a nuestro Brazo fue consecuencia de su incursión en las instalaciones del Movimiento. Químicamente hablando, una reacción en cadena. La barra de control capaz de detener el incremento de las colisiones se encuentra en sus propias manos: devolver el rosario.",
+        "Informamos al CLE de que durante el fin de semana hemos sufrido un sabotaje externo en nuestro AC frío, que ha provocado la pérdida de nuestras muestras de antídotos. Hemos modificado de forma remota la toxina para eliminar su carácter mortal y hemos añadido dolores de cabeza y calambres musculares que restringirán el movimiento voluntario del cuerpo. Una vez alcanzada la fecha límite, los efectos serán irreversibles.",
+        "Aseguramos no escalar las acciones bélicas. Durante el día de hoy realizaremos la declaración oficial de un alto el fuego inmediato hasta la fecha de efecto irreversible de la toxina. Disfruten del Solemne Acto de Apertura de Curso.",
+        "Postdata: el Campus está ya llenándose de chiquillos y ustedes continúan sin rebajar las tensiones. Esta comunicación no constituye una amenaza dirigida contra los chiquillos."
+      ],
+      firma: "Húmero, Cúbito y Radio — Brazo Armado de M.E.D.I.C.I.N.A."
+    },
+    {
+      remitente: "CLE → M.E.D.I.C.I.N.A.",
+      fecha: "7 SEP 2026 · 08:15",
+      cuerpo: [
+        "El CLE ha recibido esta mañana un mensaje que interpretamos como un preocupante cambio en la estrategia negociadora del denominado Brazo Armado del Movimiento. Una bala con nuestro nombre. Tomamos nota.",
+        "En cuanto a las gravísimas acusaciones relativas al vaso, rechazamos categóricamente cualquier intento de engaño. El CLE entregó hielo. Que en el momento de la inspección este presentase estructura molecular compatible con agua líquida no demuestra cuál era su estado físico en el momento de la entrega. Correlación no implica causalidad.",
+        "Respecto al supuesto envenenamiento derivado de nuestra operación de extracción, informamos de que los miembros del CLE implicados continúan conscientes, orientados en las tres esferas y sin delirios conocidos.",
+        "Respecto al rosario, permanece bajo custodia del CLE. Pedimos la devolución inmediata de Anacleto sin dispositivos de geolocalización, la excavadora de chocolate pendiente, el antídoto con prospecto y evidencia científica de su eficacia, y una declaración oficial de alto el fuego."
+      ],
+      firma: "Comité de Liberación del Esqueleto (CLE)"
+    },
     {
       remitente: "M.E.D.I.C.I.N.A. → CLE",
       fecha: "4 SEP 2026 · 22:13",
@@ -591,6 +652,20 @@
       firma: "MEDICINA"
     }
   ];
+
+  // El destacado es siempre el primero del array; el resto es el archivo.
+  const featured = comunicados[0];
+  const archivo = comunicados.slice(1);
+
+  document.getElementById('featured-remitente').textContent = featured.remitente;
+  document.getElementById('featured-fecha').textContent = featured.fecha;
+  document.getElementById('featured-body').innerHTML = featured.cuerpo.map(p => `<p>${p}</p>`).join('');
+  document.getElementById('featured-firma').innerHTML = `Atte., <strong>${featured.firma}</strong>`;
+
+  // Emisor para el kicker de la cabecera: la parte antes de "→" en remitente.
+  const emisorDestacado = featured.remitente.split('→')[0].trim();
+  document.getElementById('hero-kicker').textContent =
+    `ÚLTIMO COMUNICADO — ${emisorDestacado}, ${featured.fecha.replace(' · ', ', ')}H`;
 
   let archivoIdx = 0;
   function renderArchivo(){
