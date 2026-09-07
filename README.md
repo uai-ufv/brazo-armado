@@ -25,7 +25,7 @@ Cualquier actualización debe reflejarse en `index.html` en la rama principal. E
 
 ## Actualización de comunicados
 
-Cuando la situación evolucione — nuevas exigencias, nuevos plazos, nuevas pruebas gráficas del CLE — se sustituye `index.html` por la versión actualizada. Se ruega a quien edite el documento mantener el tono institucional del Movimiento y no ceder ante la tentación de la ironía barata. La seriedad de las negociaciones así lo exige.
+Cuando la situación evolucione (nuevas exigencias, nuevos plazos, nuevas pruebas gráficas del CLE) se sustituye `index.html` por la versión actualizada. Se ruega a quien edite el documento mantener el tono institucional del Movimiento y no ceder ante la tentación de la ironía barata. La seriedad de las negociaciones así lo exige.
 
 ## Mando
 
