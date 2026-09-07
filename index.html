@@ -78,13 +78,20 @@
   /* ---------- Hero ---------- */
   .hero{
     position:relative; z-index:1;
+    width:100%;
+    max-width:none;
     padding:14vh 6vw 10vh;
-    max-width:1100px;
   }
   .kicker{
     color:var(--blood-bright); font-size:0.78rem; letter-spacing:0.08em;
     margin-bottom:22px; display:block;
   }
+  .hero-columns{
+    max-width:1500px;
+    margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start;
+  }
+  .hero-column{ min-width:0; }
   .hero h1{
     font-size:clamp(2.6rem, 7vw, 5.6rem);
     line-height:0.98;
@@ -98,6 +105,9 @@
   }
   .hero p.lede{
     max-width:56ch; margin-top:28px; color:var(--bone-dim); font-size:1.02rem;
+  }
+  @media (max-width:900px){
+    .hero-columns{ grid-template-columns:1fr; }
   }
 
   .deadline{
@@ -120,6 +130,10 @@
     padding:9vh 6vw;
     max-width:1100px;
     border-top:1px solid var(--line);
+  }
+  #comunicado{
+    max-width:none;
+    width:100%;
   }
   .section-head{
     display:flex; justify-content:space-between; align-items:flex-end; gap:20px;
@@ -267,20 +281,43 @@
     <a href="#cronologia">Cronología</a>
     <a href="#pruebas">Pruebas</a>
     <a href="#mando">Mando</a>
+    <a href="#empleos">Únete al Movimiento</a>
   </nav>
 </header>
 
 <div class="hero">
-  <span class="kicker" id="hero-kicker">ÚLTIMO COMUNICADO — EPOC, 7 DE SEPTIEMBRE DE 2026, 13:04H</span>
-  <h1><span class="rule">SIGAN</span>HACIENDO MOVIMIENTOS.</h1>
-  <p class="lede">
-    EPOC ha analizado la fotografía aportada por el propio CLE: modelo de teléfono, hora exacta de la captura, nivel de zoom. Cuanta más vigilancia, más fácil la identificación.
-  </p>
+  <div class="hero-columns">
+    <div class="hero-column">
+      <h1><span class="rule">DEVUELVAN</span>EL ROSARIO.</h1>
+      <span class="kicker"></span>
+      <span class="kicker">5 DE SEPTIEMBRE DE 2026, 22:13H</span>
+      <p class="lede">
+        El Comité de Liberación del Esqueleto ha entrado en nuestras instalaciones y se ha llevado un objeto perteneciente al Movimiento. La respuesta ya no se negocia en la mesa. Se negocia en el reloj.
+      </p>
 
-  <div class="deadline">
-    <div class="label">CUENTA ATRÁS HASTA EL FIN DE LA SEMANA LABORAL — EFECTO IRREVERSIBLE DE LA TOXINA</div>
-    <div class="clock" id="clock">— — : — — : — —</div>
-    <div class="sub">El Movimiento ha ampliado el plazo y reducido la potencia del antídoto. Alto el fuego declarado hasta entonces.</div>
+      <span class="kicker">7 DE SEPTIEMBRE DE 2026, 09:15H</span>
+      <p class="lede">
+        El CLE responde a la munición personalizada del Brazo Armado con nuevas condiciones para la devolución del rosario y exige garantías sobre el antídoto. El Movimiento prepara respuesta.
+      </p>
+    </div>
+
+    <div class="hero-column">
+      <h1><span class="rule">SIGAN</span>HACIENDO MOVIMIENTOS.</h1>
+      <span class="kicker"></span>
+      <span class="kicker" id="hero-kicker">7 DE SEPTIEMBRE DE 2026, 13:04H</span>
+      <p class="lede">
+        EPOC ha analizado la fotografía aportada por el propio CLE: modelo de teléfono, hora exacta de la captura, nivel de zoom. Cuanta más vigilancia, más fácil la identificación.
+      </p>
+    </div>
+
+    <!-- <div class="hero-column"> -->
+      <div class="deadline">
+        <div class="label">CUENTA ATRÁS HASTA EL VIERNES 11, 12:00H — EFECTO IRREVERSIBLE DE LA TOXINA</div>
+        <div class="clock" id="clock">— — : — — : — —</div>
+        <div class="sub">El Movimiento ha ampliado el plazo y reducido la potencia del antídoto. Alto el fuego declarado hasta entonces.</div>
+      </div>
+      <!-- </div> -->
+      
   </div>
 </div>
 
@@ -420,7 +457,7 @@
 <section id="pruebas">
   <div class="section-head">
     <h2>Pruebas gráficas</h2>
-    <span class="section-num">04B / MATERIAL APORTADO POR AMBAS PARTES</span>
+    <span class="section-num">05 / MATERIAL APORTADO POR AMBAS PARTES</span>
   </div>
   <div class="pruebas">
     <div class="prueba">
@@ -452,7 +489,7 @@
 <section id="empleos">
   <div class="section-head">
     <h2>Incorporaciones al Movimiento</h2>
-    <span class="section-num">05 / VACANTES ABIERTAS</span>
+    <span class="section-num">06 / VACANTES ABIERTAS</span>
   </div>
   <p style="max-width:64ch; color:var(--bone-dim); font-size:0.92rem; margin:-20px 0 36px;">
     Ante el nivel de sofisticación alcanzado por las operaciones del CLE, el Movimiento amplía su estructura. Se abren las siguientes plazas. Las candidaturas se gestionan de forma confidencial a través de EPOC.
