@@ -290,17 +290,17 @@
     <div class="hero-column">
       <h1><span class="rule">PAGO PARCIAL</span>DEL RESCATE.</h1>
       <span class="kicker"></span>
+      <span class="kicker">9 DE SEPTIEMBRE DE 2026, 16:45H</span>
+      <p class="lede">
+        Ante la reducción de las tensiones, el Movimiento vuelve a operar con normalidad en la sede y sus miembros retoman sus puestos de trabajo. La paz ha sido restaurada. La vigilancia, sin embargo, permanece activa.
+      </p>
+
       <span class="kicker">9 DE SEPTIEMBRE DE 2026, 16:40H</span>
       <p class="lede">
         Miembros del CLE han acudido a la sede central de M.E.D.I.C.I.N.A. y han entregado un camión con chuches. El Movimiento ha declarado la posición exacta de Anacleto, ahora
         oficialmente bajo la custodia del CLE. No obstante, aun no se ha entregado el Plan de Adaptación y Cuidados (AC frío y calor). M.E.D.I.C.I.N.A. agradece a sus militantes el esfuerzo realizado.
         <!-- <img src="img/nota-prensa-rescate-260909.jpg" alt="Nota de prensa. Pago del rescate de Anacleto. 260909" style="width: 75%;> -->
         <img src="img/nota-prensa-rescate-260909.jpg" alt="Nota de prensa. Pago del rescate de Anacleto. 260909" style="width: 100%;">
-      </p>
-
-      <span class="kicker">9 DE SEPTIEMBRE DE 2026, 16:45H</span>
-      <p class="lede">
-        Ante la reducción de las tensiones, el Movimiento vuelve a operar con normalidad en la sede y sus miembros retoman sus puestos de trabajo. La paz ha sido restaurada. La vigilancia, sin embargo, permanece activa.
       </p>
 
       <h1><span class="rule">SIGAN</span>HACIENDO MOVIMIENTOS.</h1>
@@ -348,7 +348,6 @@
       <div id="featured-body"></div>
       <div class="firma" id="featured-firma"></div>
     </div>
-
     <div class="archivo">
       <div class="archivo-head">
         <span class="archivo-label">COMUNICADOS ANTERIORES</span>
@@ -603,6 +602,18 @@
   const comunicados = [
     {
       remitente: "M.E.D.I.C.I.N.A. → CLE",
+      fecha: "9 SEP 2026 · 23:59",
+      cuerpo: [
+        "Hoy hemos aceptado como pago el camión de chuches enviado a nuestra sede central. Reconocemos que el pago no se corresponde exactamente con lo exigido en su día, pero el Movimiento, en un gesto de buena voluntad y por la emoción del momento, ha decidido darlo por válido.",
+        "Hemos señalado con nuestros metacarpianos (Anacleto nos ha estado dando seminarios sobre huesos estos días) la ubicación exacta de Anacleto y procedido a la entrega de su custodia. Confiamos en que, a estas alturas, ya hayan enviado el convoy para recogerlo. El cual les recomendamos que sea de mayor tamaño que el usado hoy para la entrega de chuches.  No obstante, permanece pendiente un punto que siempre hemos consideramos innegociable: el compromiso por escrito del Plan de Adaptación y Cuidados (AC frío y calor), con capítulos que garanticen la reinserción de Anacleto en la vida civil y su condición permanente de su condición de civil.",
+        "A pesar de que el asunto de Anacleto está llegando a su fin, no pasamos por alto que nuestro rosario continúa bajo su custodia. El encuentro de hoy ha servido para demostrar que el Movimiento sabe aguantar y gestionar una crisis diplomática. Y, por lo que parece, finalmente la diplomacia ha dado sus frutos.",
+        "Les pedimos que, al igual que durante la custodia de Anacleto el Movimiento ha velado por su buen estado, hagan ahora lo mismo con el rosario y le proporcionen lo necesario para garantizar su correcto funcionamiento tras su liberación. No queremos entrar en cuestiones técnicas, pero un rosario bajo custodia requiere de cierto mantenimiento espiritual.",
+        "Nos pondremos en contacto con el CLE próximamente. Ya se enterarán del <em>cómo</em>."
+      ],
+      firma: "Movimiento Esquelético De Insurrección Contra la Inmovilidad Natural y Adquirida (MEDICINA)"
+    },
+    {
+      remitente: "M.E.D.I.C.I.N.A. → CLE",
       fecha: "7 SEP 2026 · 13:04",
       cuerpo: [
         "En respuesta a vuestro reciente mensaje, efectivamente, la vigilancia no cesa. Pero no somos nosotros los vigilados. Les sugerimos que hagan zoom a la fotografía. Son sus integrantes y cómplices quienes están siendo vigilados.",
@@ -758,8 +769,8 @@
 
   // Emisor para el kicker de la cabecera: la parte antes de "→" en remitente.
   const emisorDestacado = featured.remitente.split('→')[0].trim();
-  document.getElementById('hero-kicker').textContent =
-    `ÚLTIMO COMUNICADO — ${emisorDestacado}, ${featured.fecha.replace(' · ', ', ')}H`;
+//  document.getElementById('hero-kicker').textContent =
+//    `ÚLTIMO COMUNICADO — ${emisorDestacado}, ${featured.fecha.replace(' · ', ', ')}H`;
 
   let archivoIdx = 0;
   function renderArchivo(){
